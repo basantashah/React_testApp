@@ -1,8 +1,25 @@
-import Header from '../components/Header'
+import Fetch from 'isomorphic-unfetch';
+import Layout from '../components/Layout';
 
-export default () => (
+import Prices from '../components/Prices';
+
+const Index = (props) => (
+  <Layout>
     <div>
-        <Header />
-        <p>Hello Next.js</p>
+      <h1>PayHQ</h1>
+      <p></p>
+      <Prices bpi={props.bpi}/>
     </div>
-)
+  </Layout>
+);
+
+Index.getInitialProps = async function() {
+  const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+  const data = await res.json();
+
+  return {
+    bpi: data.bpi
+  };
+}
+
+export default Index;

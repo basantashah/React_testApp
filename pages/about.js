@@ -1,8 +1,12 @@
-import Header from '../components/Header'
+import Layout from '../components/Layout';
 
-export default () => (
+const About = () => (
+  <Layout>
     <div>
-        <Header />
-        <p>Hello about.js</p>
+      <h1>About PayHQ</h1>
+      <p>Application to view Bitcoin prices</p>
     </div>
-)
+  </Layout>
+);
+
+export default About;
