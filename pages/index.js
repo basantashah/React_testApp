@@ -10,7 +10,7 @@ const Index = (props) => (
       <p><small class="text-muted"> The exchange for cyrpto lovers </small></p>
 
       <p></p>
-      {/* <Prices bpi={props.bpi}/> */}
+      
     
 
 
@@ -74,10 +74,13 @@ const Index = (props) => (
               <input class="form-control" placeholder="Default input" id="inputDefault" type="text"></input>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" onclick="showInput();">Save</button>
+            
           </div>
           <div class = "col-sm-6">
-           <p> this is a test </p>
+           <h3> Feed USDr price per ETH: </h3>
+             <h3> over feed: </h3>
+
           </div>
           </div>
         </div>
@@ -87,17 +90,19 @@ const Index = (props) => (
         </div>
       </div>
       </div>
+      <Prices bpi={props.bpi}/>
           
   </Layout>
 );
 
-// Index.getInitialProps = async function() {
-//   const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
-//   const data = await res.json();
+Index.getInitialProps = async function() {
+  const res = await fetch('https://api.coindesk.com/v1/bpi/currentprice.json');
+  const data = await res.json();
 
-//   return {
-//     bpi: data.bpi
-//   };
-// }
+  return {
+    bpi: data.bpi
+  };
+}
+
 
 export default Index;
